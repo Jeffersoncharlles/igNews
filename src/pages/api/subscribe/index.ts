@@ -1,6 +1,8 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { getSession } from "next-auth/react";
+import { fauna } from "../../../services/fauna";
 import { stripe } from "../../../services/stripe";
+import { query as q } from 'faunadb'
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
     if (req.method === 'POST') {
@@ -10,6 +12,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             email: session.user.email
             // metadata
         })
+
+        await fauna.query()
 
         const stripeCheckoutSession = await stripe.checkout.sessions.create({
             customer: stripeCustomer.id,//id do stripe nao do fauna
