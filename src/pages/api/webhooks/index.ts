@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { Readable } from 'stream';
 import Stripe from "stripe";
 import { stripe } from "../../../services/stripe";
+import { saveSubscription } from "../_lib/manageSubscription";
 
 const buffer = async (readable: Readable) => {
     const chunks = [];
@@ -46,6 +47,13 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
                 switch (type) {
                     case 'checkout.session.completed':
 
+                        const checkoutSession = event.data.object as Stripe.Checkout.Session;
+
+                        // console.log(checkoutSession, "checout")
+                        await saveSubscription(
+                            checkoutSession.subscription.toString(),
+                            checkoutSession.customer.toString()
+                        )
                         break;
 
                     default:
@@ -62,3 +70,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         res.status(405).end('Method not allowed')
     }
 }
+
+
