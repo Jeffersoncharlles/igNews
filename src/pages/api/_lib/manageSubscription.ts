@@ -9,7 +9,11 @@ interface SubscriptionProps {
 
 }
 
-const saveSubscription = async (subscriptionId: string, customerId: string) => {
+const saveSubscription = async (
+    subscriptionId: string,
+    customerId: string,
+    created_action = false
+) => {
     //buscar o usuario no banco do Faunadb com o ID {customerId}
     // console.log(subscriptionId, "sub");
     // console.log(customerId, "cus");
@@ -37,14 +41,31 @@ const saveSubscription = async (subscriptionId: string, customerId: string) => {
 
     }
 
-    //salvar os dados da subscription no FaunaDb
-    await fauna.query(
-        q.Create(
-            q.Collection('subscritpions'),
-            { data: subscriptionData }
+    if (created_action) {
+        //salvar os dados da subscription no FaunaDb
+        await fauna.query(
+            q.Create(
+                q.Collection('subscritpions'),
+                { data: subscriptionData }
+            )
         )
-    )
+    } else {
 
+        await fauna.query(
+            q.Replace(
+                q.Select(
+                    'ref',
+                    q.Get(
+                        q.Match(
+                            q.Index('subscritpion_by_id'),
+                            subscription.id
+                        )
+                    )
+                ),
+                { data: subscriptionData }
+            )
+        )
+    }
 }
 
 export { saveSubscription }
