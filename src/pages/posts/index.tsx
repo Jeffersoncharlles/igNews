@@ -27,7 +27,7 @@ export default function ({ posts }: PostProps) {
             <main className={styles.container}>
                 <div className={styles.posts}>
                     {posts.map(p => (
-                        <a href={p.slug}>
+                        <a href={p.slug} key={p.slug}>
                             <time>{p.updated_at}</time>
                             <strong>{p.title}</strong>
                             <p>{p.excerpt}</p>
@@ -52,6 +52,8 @@ export const getStaticProps: GetStaticProps = async () => {
         }
     )
     // console.log(JSON.stringify(response, null, 2));
+
+    //formatar data
     const posts = response.results.map(post => {
         return {
             slug: post.uid,
