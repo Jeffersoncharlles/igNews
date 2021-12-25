@@ -38,5 +38,36 @@
                 margin: 0.5rem 0;
             }
         }
+
+
+        //se essa postContent tambem for
+        &.previewContent {
+            //vai do cinza do texto ate transparent
+            background: linear-gradient(var(--gray-100), transparent);
+            //clip faz que o background aplicado da div se comporta o do texto
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
     }
+}
+
+.continueReading {
+    padding: 2rem;
+    text-align: center;
+    background: var(--gray-850);
+    border-radius: 100px;
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin: 4rem 0 2rem;
+
+    a {
+        color: var(--yellow-500);
+        margin-left: 0.5rem;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+
 }
