@@ -58,8 +58,11 @@ export default function PostsPreview({ post }: PostsPreviewProps) {
 
 export const getStaticPaths = () => {
     return {
+        //qual caminho gerar durante a build vazio seria nenhuma
+        //dentro do path seria  {params:{slug: 'paginas'}}
         paths: [],
         fallback: 'blocking'
+        //true , false , 'blocking'
     }
 }
 
@@ -80,6 +83,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         updated_at: formatDate(response.last_publication_date)
     }
     return {
-        props: { post }
+        props: { post },
+        revalidate: 60 * 30 //30minutos
     }
 }
