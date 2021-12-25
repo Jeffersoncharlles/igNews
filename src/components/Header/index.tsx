@@ -10,7 +10,9 @@ export const Header = () => {
     return (
         <header className={styles.headerContainer}>
             <div className={styles.headerContent}>
-                <img src="/images/logo.svg" alt="Logo ig news" />
+                <a href="/">
+                    <img src="/images/logo.svg" alt="Logo ig news" />
+                </a>
                 <nav>
                     <ActiveLink activeClassName={styles.active} href="/">
                         <a >Home</a>
