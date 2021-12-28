@@ -24,4 +24,37 @@ npm run dev
 # or
 yarn dev
 ```
+## 🚀 Technologies:
 
+This Front-End project was developed using the following technologies:
+
+-   [Typescript][typescript]
+-   [NextJs][nextjs]
+-   [Sass][sass]
+-   [React Icons][react-icons]
+-   [Axios][axios]
+-   [Prismic][prismic]
+-   [Stripe][stripe]
+-   [FaunaDB][fauna]
+
+This project in under MIT license, for more details check in [LICENSE][license]. <br>
+Feel free to bring new features or fix problems, it will be a pleasure! 💜
+
+
+<div align='center'>
+  Made with 💚  by <strong>Jefferson Charlles</strong> 🔥
+  <a href='https://www.linkedin.com/in/jeffersoncharlles/'>Get in touch!</a>
+</div>
+
+[typescript]: https://www.typescriptlang.org/
+[nextjs]: https://nextjs.org/
+[sass]: https://sass-lang.com/
+[axios]: https://axios-http.com/docs/intro
+[prismic]: https://prismic.io/
+[stripe]: https://stripe.com/br
+[react-icons]: https://react-icons.github.io/react-icons/
+[git]: https://git-scm.com
+[fauna]: https://fauna.com/
+[yarn]: https://yarnpkg.com/
+[license]: ./LICENSE
+[linkedin]: https://www.linkedin.com/in/jeffersoncharlles/
