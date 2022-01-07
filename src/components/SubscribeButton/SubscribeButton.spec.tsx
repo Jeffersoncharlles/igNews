@@ -52,7 +52,7 @@ describe('SignInButton component', () => {
         const subscribeButton = screen.getByText('Subscribe Now')
         fireEvent.click(subscribeButton)
 
-        expect(pushMock).toHaveBeenCalled();
+        expect(pushMock).toHaveBeenCalledWith('/posts');
         //espero que tenha sido chamado
     })
 })
