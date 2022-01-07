@@ -4,16 +4,7 @@ import { api } from '../../services/api';
 import { getStripeJs } from '../../services/stripejs';
 import styles from './styles.module.scss';
 
-interface SubsCribeProps {
-    priceId: string;
-}
-
-//usar credencial secret
-//getServiceProps (ssr)
-//getStaticProps(SSG)
-//API routes
-
-export const SubscribeButton = ({ priceId }: SubsCribeProps) => {
+export const SubscribeButton = () => {
     const { data: session } = useSession();
     const router = useRouter()
 
