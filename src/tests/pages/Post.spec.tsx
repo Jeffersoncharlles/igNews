@@ -65,7 +65,11 @@ describe('Post page', () => {
     //         })
     //     } as any)
     //     useSessionMocked.mockReturnValueOnce({
-    //         activeSubscription: 'fake-active'
+    //         data: {
+    //             user: { name: 'John Doe', email: 'john.doe@example.com' },
+    //             expires: 'fake-expires', activeSubscription: 'fake-active'
+    //         },
+    //         status: 'authenticated',
     //     } as any)
 
     //     const resp = await getServerSideProps({
