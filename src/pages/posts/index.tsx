@@ -66,8 +66,6 @@ export const getStaticProps: GetStaticProps = async () => {
             updated_at: formatDate(post.last_publication_date)
         }
     })
-
-
     return {
         props: { posts }
     }

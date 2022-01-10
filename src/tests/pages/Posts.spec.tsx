@@ -8,9 +8,7 @@ jest.mock('next-auth/react');
 jest.mock('../../services/prismic');
 
 describe('Posts page', () => {
-    const useSessionMocked = mocked(useSession)
     const prismicMocked = mocked(getPrismicClient);
-
     const posts = [{
         slug: 'Itiprap',
         title: 'Itiprap',

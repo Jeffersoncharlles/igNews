@@ -26,39 +26,26 @@ describe('Post page', () => {
         expect(screen.getByText('Post excerpt')).toBeInTheDocument()
     })
 
-    // it('loads initial data', async () => {
-    //     prismicMocked.mockReturnValueOnce({
-    //         query: jest.fn().mockResolvedValueOnce({
-    //             results: [
-    //                 {
-    //                     uui: 'Itiprap',
-    //                     data: {
-    //                         title: [
-    //                             { type: 'heading', text: 'Itiprap' }
-    //                         ],
-    //                         content: [
-    //                             { type: 'paragraph', text: 'Post excerpt' }
-    //                         ],
-    //                     },
-    //                     last_publication_date: '04-01-2021'
-    //                 }
-    //             ]
-    //         })
-    //     } as any)
+    it('redirect user if no subscription is found', async () => {
+        useSessionMocked.mockReturnValueOnce(null)
 
-    //     const resp = await getServerSideProps({})
+        const resp = await getServerSideProps({
+            req: {
+                cookies: {},
+            },
+            params: {
+                slug: 'my-fake'
+            }
+        } as any);
 
-    //     expect(resp).toEqual(
-    //         expect.objectContaining({
-    //             props: {
-    //                 posts: [{
-    //                     slug: undefined,
-    //                     title: 'Itiprap',
-    //                     excerpt: 'Post excerpt',
-    //                     updated_at: '01 de abril de 2021'
-    //                 }]
-    //             }
-    //         })
-    //     )
-    // });
+        expect(resp).toEqual(
+            expect.objectContaining({
+                redirect: expect.objectContaining(
+                    {
+                        destination: '/',
+                    }
+                )
+            })
+        )
+    });
 })
